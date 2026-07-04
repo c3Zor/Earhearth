@@ -1,0 +1,393 @@
+<title>EARHEART Outreach Command Center</title>
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef1f4;
+    --ink: #1e2830;
+    --muted: #5c6a76;
+    --faint: #8a97a3;
+    --line: #d8dee5;
+    --accent: #0e7c86;
+    --accent-soft: #e0f0f1;
+    --ok: #1f8a4c;
+    --ok-soft: #e3f2e9;
+    --warn: #a86a10;
+    --warn-soft: #f7ecd9;
+    --miss: #b23a3a;
+    --miss-soft: #f8e6e6;
+    --you: #4a4f9e;
+    --you-soft: #e7e8f7;
+    --shadow: 0 1px 3px rgba(30, 40, 48, 0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14191e;
+      --surface: #1c232a;
+      --surface-2: #232c34;
+      --ink: #e2e8ed;
+      --muted: #9aa7b2;
+      --faint: #6d7a86;
+      --line: #2e3944;
+      --accent: #4dbfc9;
+      --accent-soft: #163439;
+      --ok: #52c088;
+      --ok-soft: #17301f;
+      --warn: #dfa94f;
+      --warn-soft: #33270f;
+      --miss: #e07a7a;
+      --miss-soft: #391b1b;
+      --you: #9a9fe0;
+      --you-soft: #23244a;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14191e;
+    --surface: #1c232a;
+    --surface-2: #232c34;
+    --ink: #e2e8ed;
+    --muted: #9aa7b2;
+    --faint: #6d7a86;
+    --line: #2e3944;
+    --accent: #4dbfc9;
+    --accent-soft: #163439;
+    --ok: #52c088;
+    --ok-soft: #17301f;
+    --warn: #dfa94f;
+    --warn-soft: #33270f;
+    --miss: #e07a7a;
+    --miss-soft: #391b1b;
+    --you: #9a9fe0;
+    --you-soft: #23244a;
+    --shadow: none;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef1f4;
+    --ink: #1e2830;
+    --muted: #5c6a76;
+    --faint: #8a97a3;
+    --line: #d8dee5;
+    --accent: #0e7c86;
+    --accent-soft: #e0f0f1;
+    --ok: #1f8a4c;
+    --ok-soft: #e3f2e9;
+    --warn: #a86a10;
+    --warn-soft: #f7ecd9;
+    --miss: #b23a3a;
+    --miss-soft: #f8e6e6;
+    --you: #4a4f9e;
+    --you-soft: #e7e8f7;
+    --shadow: 0 1px 3px rgba(30, 40, 48, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.55 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0 20px 72px;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace; }
+
+  main { max-width: 1060px; margin: 0 auto; }
+
+  header { padding: 44px 0 8px; }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.15;
+    margin: 0 0 10px;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .lede { color: var(--muted); max-width: 62ch; margin: 0; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    margin: 22px 0 0; padding: 12px 16px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    font-size: 13px; color: var(--muted);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .dot.ok { background: var(--ok); }
+  .dot.warn { background: var(--warn); }
+  .dot.miss { background: var(--miss); }
+  .dot.you { background: var(--you); }
+
+  section { margin-top: 52px; }
+  h2 {
+    font-size: 20px; margin: 0 0 4px; letter-spacing: -0.01em;
+  }
+  .section-note { color: var(--muted); font-size: 14.5px; margin: 0 0 20px; max-width: 68ch; }
+  .kicker {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--faint); margin: 0 0 6px;
+  }
+
+  /* ---- component inventory ---- */
+  .components {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .comp {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .comp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .comp-name { font-weight: 650; font-size: 15px; }
+  .comp-role { font-size: 13.5px; color: var(--muted); margin: 0; }
+  .pill {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 99px; white-space: nowrap; flex: none;
+  }
+  .pill.ok   { color: var(--ok);   background: var(--ok-soft); }
+  .pill.warn { color: var(--warn); background: var(--warn-soft); }
+  .pill.miss { color: var(--miss); background: var(--miss-soft); }
+
+  /* ---- flow lanes ---- */
+  .lane {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px 20px 22px; box-shadow: var(--shadow);
+  }
+  .lane + .lane { margin-top: 18px; }
+  .lane-title { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+  .lane-title h3 { margin: 0; font-size: 17px; }
+  .lane-freq {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11.5px; color: var(--accent); letter-spacing: 0.04em;
+  }
+  .lane-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 16px; }
+
+  .flow-scroll { overflow-x: auto; padding-bottom: 6px; }
+  .flow { display: flex; align-items: stretch; gap: 0; min-width: max-content; }
+  .step {
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 9px;
+    padding: 10px 13px; width: 168px; flex: none;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .step .who {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint);
+  }
+  .step .who.claude { color: var(--accent); }
+  .step .who.human { color: var(--you); }
+  .step strong { font-size: 13.5px; line-height: 1.3; font-weight: 650; }
+  .step em { font-style: normal; font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .step.gate {
+    background: var(--you-soft); border-color: var(--you);
+    border-style: dashed;
+  }
+  .arrow {
+    flex: none; align-self: center; width: 30px; text-align: center;
+    color: var(--faint); font-size: 15px; user-select: none;
+  }
+
+  /* ---- pipeline stages ---- */
+  .stages { display: flex; gap: 0; overflow-x: auto; padding-bottom: 6px; }
+  .stage { min-width: 148px; flex: 1 0 148px; position: relative; padding-right: 14px; }
+  .stage::after {
+    content: ""; position: absolute; right: 4px; top: 14px;
+    width: 8px; height: 8px; border-top: 2px solid var(--faint); border-right: 2px solid var(--faint);
+    transform: rotate(45deg);
+  }
+  .stage:last-child::after { display: none; }
+  .stage-name {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.03em;
+    color: var(--accent); margin: 0 0 6px;
+    border-top: 3px solid var(--accent); padding-top: 8px;
+  }
+  .stage p { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.45; padding-right: 6px; }
+
+  /* ---- build order ---- */
+  ol.build { margin: 0; padding: 0; list-style: none; counter-reset: b; display: grid; gap: 10px; }
+  ol.build li {
+    counter-increment: b;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 13px 16px 13px 52px; position: relative; box-shadow: var(--shadow);
+    max-width: 72ch;
+  }
+  ol.build li::before {
+    content: counter(b);
+    position: absolute; left: 16px; top: 13px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; font-weight: 700; color: var(--accent);
+    background: var(--accent-soft); width: 24px; height: 24px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.build strong { font-size: 14.5px; }
+  ol.build p { margin: 3px 0 0; font-size: 13.5px; color: var(--muted); }
+  .tag {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 4px; margin-left: 8px; vertical-align: 1px;
+  }
+  .tag.you-tag { color: var(--you); background: var(--you-soft); }
+  .tag.claude-tag { color: var(--accent); background: var(--accent-soft); }
+
+  .rules {
+    margin-top: 18px; padding: 14px 18px;
+    background: var(--warn-soft); border: 1px solid var(--warn); border-radius: 10px;
+    max-width: 72ch;
+  }
+  .rules p { margin: 0 0 4px; font-size: 13px; color: var(--ink); }
+  .rules p:last-child { margin-bottom: 0; }
+  .rules .kicker { color: var(--warn); }
+
+  footer { margin-top: 56px; color: var(--faint); font-size: 12.5px; max-width: 72ch; }
+</style>
+
+<main>
+  <header>
+    <p class="eyebrow">Earheart · market validation</p>
+    <h1>Outreach Command Center</h1>
+    <p class="lede">One loop for finding people, talking to them on LinkedIn and email, and turning every reply into validation evidence. Pipedrive holds the pipeline, Dex holds the relationships, Claude runs the machinery — you stay the only one who presses Send.</p>
+    <div class="legend" role="note">
+      <span><span class="dot ok"></span> Connected &amp; working</span>
+      <span><span class="dot warn"></span> Connected, writes need your approval</span>
+      <span><span class="dot miss"></span> Not connected yet</span>
+      <span><span class="dot you"></span> Your decision gate</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="kicker">01 · Hardware</p>
+    <h2>The components</h2>
+    <p class="section-note">Current, honest status of every piece — as tested from this session.</p>
+    <div class="components">
+      <div class="comp">
+        <div class="comp-head"><span class="comp-name">Pipedrive</span><span class="pill warn">approve writes</span></div>
+        <p class="comp-role">System of record for the outreach pipeline. Every prospect is a deal moving through stages.</p>
+      </div>
+      <div class="comp">
+        <div class="comp-head"><span class="comp-name">Dex</span><span class="pill ok">connected</span></div>
+        <p class="comp-role">Relationship memory: who you know, what you discussed, when to follow up. Already holds your LinkedIn Connections group and past campaigns.</p>
+      </div>
+      <div class="comp">
+        <div class="comp-head"><span class="comp-name">Unipile</span><span class="pill miss">to set up</span></div>
+        <p class="comp-role">The LinkedIn + email bridge. Lets Claude read your LinkedIn inbox and send approved messages via MCP. The one missing part.</p>
+      </div>
+      <div class="comp">
+        <div class="comp-head"><span class="comp-name">Sales Navigator</span><span class="pill warn">manual, you</span></div>
+        <p class="comp-role">Search and targeting. No API — you export shortlists; a Navigator seat also raises LinkedIn's tolerance for tooling.</p>
+      </div>
+      <div class="comp">
+        <div class="comp-head"><span class="comp-name">Gmail</span><span class="pill warn">read ok</span></div>
+        <p class="comp-role">Second channel. Claude reads and triages now; drafts and labels need your approval click per session.</p>
+      </div>
+      <div class="comp">
+        <div class="comp-head"><span class="comp-name">Earhearth repo</span><span class="pill ok">connected</span></div>
+        <p class="comp-role">Evidence base. <span class="mono">/interview</span> turns call notes into journal entries; synthesis tracks your kill-gate hypotheses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">02 · Proactive lane</p>
+    <h2>Starting conversations</h2>
+    <p class="section-note">Weekly batch. Your only manual work is targeting and approving — everything between is Claude.</p>
+    <div class="lane">
+      <div class="lane-title"><h3>Prospect → first touch</h3><span class="lane-freq">~30 min of your time / week</span></div>
+      <p class="lane-sub">Volume guardrail: max 20 invites/day, ~100/week — under LinkedIn's tolerance line.</p>
+      <div class="flow-scroll">
+        <div class="flow">
+          <div class="step"><span class="who human">You · 10 min</span><strong>Sales Nav search</strong><em>Saved search per segment, export shortlist</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>Load into Pipedrive</strong><em>One deal per person, stage: Prospect</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>Research + draft</strong><em>Personalized invite per profile, no template smell</em></div>
+          <span class="arrow">→</span>
+          <div class="step gate"><span class="who human">You · gate</span><strong>Approve / edit</strong><em>Batch review, one sitting</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>Send via Unipile</strong><em>Drip-paced, not blasted</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>Log to Dex</strong><em>Contact + note + follow-up reminder</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">03 · Reactive lane</p>
+    <h2>When someone messages you</h2>
+    <p class="section-note">This is where "very reactive" happens: every reply gets a context-aware draft waiting for you, instead of sitting unread for days.</p>
+    <div class="lane">
+      <div class="lane-title"><h3>Reply → booked call</h3><span class="lane-freq">draft ready ≤ 15 min after reply</span></div>
+      <p class="lane-sub">Trigger: new LinkedIn or email message arrives through Unipile.</p>
+      <div class="flow-scroll">
+        <div class="flow">
+          <div class="step"><span class="who">Unipile</span><strong>Reply detected</strong><em>LinkedIn DM or email lands</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>Assemble context</strong><em>Dex history + Pipedrive stage + thread</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>Draft the reply</strong><em>Goal-aware: warm → propose call slots</em></div>
+          <span class="arrow">→</span>
+          <div class="step gate"><span class="who human">You · gate</span><strong>Approve from phone</strong><em>One tap or quick edit</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>Send + advance stage</strong><em>Pipedrive moves, Dex notes update</em></div>
+          <span class="arrow">→</span>
+          <div class="step"><span class="who claude">Claude</span><strong>After the call</strong><em><span class="mono">/interview</span> → journal → synthesis</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">04 · Pipeline design</p>
+    <h2>Pipedrive stages for validation outreach</h2>
+    <p class="section-note">Not a sales pipeline — an evidence pipeline. The "win" is a completed interview, and the far end feeds your presale test.</p>
+    <div class="stages">
+      <div class="stage"><p class="stage-name">PROSPECT</p><p>Shortlisted from Sales Nav, deal created</p></div>
+      <div class="stage"><p class="stage-name">INVITED</p><p>Connection request sent, waiting</p></div>
+      <div class="stage"><p class="stage-name">CONNECTED</p><p>Accepted — opener message goes out</p></div>
+      <div class="stage"><p class="stage-name">IN CONVO</p><p>Replying; Claude drafts every turn</p></div>
+      <div class="stage"><p class="stage-name">CALL BOOKED</p><p>15–20 min slot on calendar</p></div>
+      <div class="stage"><p class="stage-name">INTERVIEWED</p><p>Journal entry written, hypotheses updated</p></div>
+      <div class="stage"><p class="stage-name">ADVOCATE</p><p>Presale / fake-door list for the $199 test</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">05 · Build order</p>
+    <h2>Three steps to switch this on</h2>
+    <ol class="build">
+      <li>
+        <strong>Connect Unipile</strong><span class="tag you-tag">you · ~20 min</span>
+        <p>Sign up at unipile.com, link your LinkedIn account there, add their MCP server as a custom connector in claude.ai settings. This is the only new subscription.</p>
+      </li>
+      <li>
+        <strong>Approve the write permissions</strong><span class="tag you-tag">you · 2 min</span>
+        <p>In an interactive session, allow Pipedrive and Dex writes so pipeline moves and contact notes stop hitting the approval wall.</p>
+      </li>
+      <li>
+        <strong>Wire the loop</strong><span class="tag claude-tag">claude</span>
+        <p>Build the Pipedrive stages, message templates per segment, Dex logging rules, and the reactive drafting routine. You give the target segments; the machine does the rest.</p>
+      </li>
+    </ol>
+    <div class="rules">
+      <p class="kicker">Standing safety rules</p>
+      <p>Nothing sends without your approval — Claude drafts, you press Send.</p>
+      <p>≤ 20 connection requests/day. No mass blasts, no scraping beyond your shortlists.</p>
+      <p>Your LinkedIn account is founder identity. When in doubt, slower wins.</p>
+    </div>
+  </section>
+
+  <footer>
+    Status snapshot from Claude session, 2026-07-04. Component states reflect live tests in this session; approval barriers may differ in interactive sessions.
+  </footer>
+</main>
