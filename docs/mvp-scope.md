@@ -66,8 +66,11 @@ Kai visi trys teigiami → pereinama prie Flex PCB / formos faktoriaus etapo ir 
 
 ## 6. Kiti žingsniai
 
-- [ ] Patentų lauko analizė (B kryptis) — swarm research.
-- [ ] Konkurentų žemėlapis ir fem-first nišos analizė (A kryptis) — swarm research.
-- [ ] Multi-perspektyvų vertinimas (mąstymo kepurės + CEO panelė) → `docs/analysis/swarm-report.md`.
+- [x] Patentų lauko analizė (B kryptis) — žr. [swarm ataskaitą](analysis/swarm-report.md).
+- [x] Konkurentų žemėlapis ir fem-first nišos analizė (A kryptis) — žr. [swarm ataskaitą](analysis/swarm-report.md).
+- [x] Multi-perspektyvų vertinimas (kepurės + CEO panelė) → `docs/analysis/swarm-report.md`. **Verdiktas: CONDITIONAL GO.**
+- [ ] File provisional patentų paraiškas (prieš bet kokį viešą demo!).
+- [ ] FTO opinion iš patentų advokato (Shennib US12498584B2 + Olympus US9217882B2) — kill gate #1.
+- [ ] Clean-room rebuild be Ultrahuman elektronikos.
+- [ ] 30 moterų wear study + presale testas $199–249 — kill gate #2.
 - [ ] Vidinis feasibility aptarimas su prototipu ir ataskaita rankose.
-- [ ] (Nebūtina) Formalus ilgesnio dėvėjimo testas su prototipu.
