@@ -58,11 +58,19 @@
 
 | Patentas | Statusas | Rizika EARHEART |
 |---|---|---|
-| **US12498584B2 (Shennib)** „Eyeglass hearing device with biosensors" — smilkinio arterija! | Granted 2025-12, iki **~2044** | **#1 FTO prioritetas.** Klausimas: ar claims reikalauja klausos funkcijos + spyruoklinės kojelės? Jei taip — pasyvi kojinė apeina. Individualus išradėjas → **svarstyti licenciją/pirkimą** (tada tai taptų mūsų grioviu iki 2044) |
+| **US12498584B2 (Shennib)** „Eyeglass hearing device with biosensors" — smilkinio arterija (STA) | Granted 2025-12, iki **~2044** | **Sumažinta po vietos patikslinimo (žr. 3.3):** EARHEART matuoja **mastoidinėje srityje už ausies** (posterior auricular arterija), ne prie smilkinio arterijos, kurią nurodo Shennib claims — skirtingos anatominės vietos, keliai nesikerta. Lieka FTO prioritetas #1 patvirtinti: (a) ar visi nepriklausomi claims turi STA/vietos apribojimą, (b) ar reikalauja klausos funkcijos + spyruoklinės kojelės. Individualus išradėjas → licencijos/pirkimo opcija lieka kaip offensive ėjimas |
 | **US9217882B2 (Olympus)** detachable temple tip su elektronika | Aktyvus iki ~2033 | #2 prioritetas — claim 17 apie temple tip; patikrinti, ar reikalauja display funkcijos |
 | US10598960B2 (e-Vision) docking modulis | **NEBEGALIOJA** — PTAB IPR nukirto visus claims (FWD 2025-12-30) | Nėra ✅ |
 | US20200271960A1 (Innocean) modulinė kojelė su HR | **Apleista paraiška** | Nėra — bet puikus **drafting lane** mūsų pačių paraiškai |
 | US6431705B1 (Infoeye) eyewear HR monitor | **Pasibaigęs** (prioritetas 1999!) | Nėra — **prior art ginklas** prieš '723 ir kitus (invalidity rezerve) |
+
+### 3.3 Vietos patikslinimas: MASTOIDAS, ne smilkinio arterija (2026-07-04)
+
+Founderis patikslino: EARHEART jutiklis dirba **mastoidinėje srityje** — už ausies kaušelio, virš mastoidinio kaulo (kraujotaka: *posterior auricular* arterija), o **ne** prie smilkinio arterijos (STA), kuri eina *prieš* ausį smilkinio srityje. Pasekmės:
+
+- **Shennib '584 rizika mažėja:** jo claims nurodo biosensorius kojelėje *adjacent to the superficial temporal artery*. Jei STA vieta yra claim limitation — EARHEART šio elemento neturi. Skirtingi anatominiai keliai, produktai nesikerta.
+- **Ką vis tiek patikrinti su advokatu:** (1) ar *visi* Shennib nepriklausomi claims turi STA apribojimą (jei bent vienas kalba apie „biosensor in temple portion" be vietos — mastoid argumentas jo neapeina); (2) žodžio *adjacent* aiškinimo ribas.
+- **Mūsų dokumentacijos taisyklė:** visur nuosekliai vartoti *mastoid / posterior auricular region, posterior to the auricle* — tai ir diferenciacija nuo Shennib, ir tikslus mūsų provisional paraiškos core claim'o žodynas. Mastoido kaulinis pagrindas (stabilus kontaktas) — inžinerinis argumentas, kuris kartu yra ir teisinė riba.
 
 ## 4. AR DAUGIAU DAVIKLIŲ PADEDA? (tiesus atsakymas)
 

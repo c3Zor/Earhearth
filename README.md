@@ -2,11 +2,11 @@
 
 **Paverskite bet kuriuos akinius biometrine laboratorija.**
 
-EARHEART — išmanus adapteris („kojinė"), užmaunamas ant akinių kojelės galo, matuojantis biometriką už ausies (smilkinio arterijos zona). Tikslas — „Oura" lygio duomenys be jokio papildomo papuošalo, tinkantys 99 % rėmelių.
+EARHEART — išmanus adapteris („kojinė"), užmaunamas ant akinių kojelės galo, matuojantis biometriką **užausinėje (mastoidinėje) srityje** — už ausies kaušelio, virš mastoidinio kaulo. Tikslas — „Oura" lygio duomenys be jokio papildomo papuošalo, tinkantys 99 % rėmelių.
 
 ## Kodėl už ausies?
 
-- **Tikslumas:** smilkinio arterija ir kietas kaulinis pagrindas duoda stipresnį ir švaresnį PPG signalą nei riešas ar pirštas.
+- **Tikslumas:** užausinė sritis (posterior auricular arterija) ir kietas mastoidinio kaulo pagrindas duoda stabilų kontaktą ir švarų PPG signalą — validuota lygiaverčiai pirštui.
 - **Dėvėjimo laikas:** akiniai nešiojami visą dieną — unikaliai ilgas nepertraukiamas matavimo langas.
 - **Diskretiškumas:** nematomas sprendimas, „nešaukiantis" apie save — ypač aktualu fem-first segmentui (ciklas, streso valdymas).
 
