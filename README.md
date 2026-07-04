@@ -13,6 +13,13 @@ EARHEART — išmanus adapteris („kojinė"), užmaunamas ant akinių kojelės 
 ## Dokumentai
 
 - [MVP scope](docs/mvp-scope.md) — kas įeina ir kas neįeina į MVP, sprendimo kriterijai, kiti žingsniai.
+- [Interviu žurnalas](docs/interviews/README.md) — rinkos validacijos įrodymų bazė.
+- [Interviu sintezė](docs/interviews/synthesis.md) — pattern'ai ir hipotezių būsena.
+
+## Claude skill'ai
+
+- `/interview` — žalias pokalbio pastabas paverčia struktūruotu įrašu ir prižiūri sintezę.
+- `/radar` — rinkos ir patentų radaras, ataskaitos kaupiamos `docs/radar/`.
 
 ## Statusas
 
